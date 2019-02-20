@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="site.css" />
+    <script src="vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+
+
+    <div id="app">
+    <input type="text" v-on:input="changeTitle">
+    <h1 v-once>{{ noChangeOfHeading() }}</h1>
+    <h4>
+     {{ title }} - <a v-bind:href="link" target="_blank">Google</a>
+   </h4>
+   <p>
+     {{ sayHello() }}
+   </p>
+   <p>
+     {{ firstGreeting() }}
+   </p>
+   <h4 v-html='finishedLink' target="_blank"></h4>
+    </div>
+
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+          heading: "Let's practice Vue.js",
+          title: 'Hello World!',
+          link: 'http://google.com',
+          message: 'Greetings',
+          finishedLink: 'Search your video on <a href="http://youtube.com">Youtube</a>'
+        },
+        methods: {
+          noChangeOfHeading: function(){
+            this.title = 'Learn Vue.js';
+            return this.heading;
+          },
+          changeTitle: function(event) {
+            this.title = event.target.value;
+          },
+          sayHello: function() {
+          return 'How is everything going?';
+        },
+          firstGreeting: function() {
+            return this.message;
+          }
+        }
+      });
+    </script>
+
+  </body>
+</html>
