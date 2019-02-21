@@ -23,6 +23,16 @@
      {{ firstGreeting() }}
    </p>
    <h4 v-html='finishedLink' target="_blank"></h4>
+
+    <button v-on:click='increase'>Click me &#8593;</button>
+     <p>{{ counter }}</p>
+
+     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }} - <span v-on:mousemove.stop="">DEAD SPOT</span>
+      </p>
+     <!-- mousemove.stop; stop is a specific event that unable coordinates when hovering over DEAD SPOT -->
+     <button v-on:click='decrease(2)'>Click me &#8595;</button>
+      <p>{{ number }}</p>
+
     </div>
 
     <script>
@@ -33,7 +43,12 @@
           title: 'Hello World!',
           link: 'http://google.com',
           message: 'Greetings',
-          finishedLink: 'Search your video on <a href="http://youtube.com">Youtube</a>'
+          finishedLink: 'Search your video on <a href="http://youtube.com">Youtube</a>',
+          counter: 0,
+          x: 0,
+          y: 0,
+          number: 100
+
         },
         methods: {
           noChangeOfHeading: function(){
@@ -48,6 +63,16 @@
         },
           firstGreeting: function() {
             return this.message;
+          },
+          increase: function() {
+            this.counter++;
+          },
+          updateCoordinates: function(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          decrease: function(step){
+            this.number -= step
           }
         }
       });
