@@ -52,7 +52,15 @@
       <p>Result: {{ result }} | {{ output }}</p>
       <hr />
 
+      <button @click="changeLink">Click to Change Link</button>
+      <a :href="newLink">Link</a>
+
     </div>
+
+   <!-- el: Connect to DOM -->
+   <!-- data: Store Data to be used -->
+   <!-- methods: Methods of this Vue Instance / functions -->
+   <!-- watch: Execute code upon data changes -->
 
     <script>
     new Vue({
@@ -70,13 +78,22 @@
           name: 'John Doe',
           result: '',
           secondCounter: 0,
-          newcounter: 0
+          newcounter: 0,
+          newLink: 'http://amazon.com'
 
         },
         computed: {
           output: function() {
             // console.log('Computed');
             return this.newcounter > 5 ? 'Greater than 5' : 'Smaller than 5';
+          }
+        },
+        watch: {
+          newcounter: function(value) {
+            let vm = this;
+            setTimeout(function() {
+              vm.newcounter = 0;
+            },2000)
           }
         },
         methods: {
@@ -108,6 +125,9 @@
           },
           result: function() {
             return this.newcounter > 5 ? 'Greater than 5' : 'Smaller than 5';
+          },
+          changeLink: function() {
+            this.newLink = 'https://www.apple.com/'
           }
         }
       });
