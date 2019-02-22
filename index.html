@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
     <link rel="stylesheet" type="text/css" href="site.css" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="vue.js"></script>
     <title></title>
   </head>
@@ -25,7 +26,10 @@
    <h4 v-html='finishedLink' target="_blank"></h4>
 
     <button v-on:click='increase'>Click me &#8593;</button>
-     <p>{{ counter }}</p>
+    <button v-on:click='counter++'>Click me &#8593;</button>
+     <p>{{ counter*2 }}</p>
+     <p>{{ counter*2 > 10 ? 'Greater than 10' : 'Smaller than or equal to 10' }}</p>
+     <hr />
 
      <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }} - <span v-on:mousemove.stop="">DEAD SPOT</span>
       </p>
