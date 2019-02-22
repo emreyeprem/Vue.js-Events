@@ -38,6 +38,19 @@
       <p>{{ number }}</p>
 
       <input type="text" v-on:keyup.enter.space="alertMe" placeholder="type to alert"/>
+      <br /><br /><br />
+
+      <input type="text" v-model="name" placeholder="two-way binding/update"/>
+      <p>{{ name }}</p>
+      <hr />
+
+
+      <button v-on:click="newcounter++">Increase</button>
+      <button v-on:click="newcounter--">Decrease</button>
+      <button v-on:click="secondCounter++">Increase Second</button>
+      <p>Counter: {{ newcounter }} | {{ secondCounter }}</p>
+      <p>Result: {{ result }} | {{ output }}</p>
+      <hr />
 
     </div>
 
@@ -53,8 +66,18 @@
           counter: 0,
           x: 0,
           y: 0,
-          number: 100
+          number: 100,
+          name: 'John Doe',
+          result: '',
+          secondCounter: 0,
+          newcounter: 0
 
+        },
+        computed: {
+          output: function() {
+            // console.log('Computed');
+            return this.newcounter > 5 ? 'Greater than 5' : 'Smaller than 5';
+          }
         },
         methods: {
           noChangeOfHeading: function(){
@@ -82,6 +105,9 @@
           },
           alertMe: function(){
             alert('Alert!');
+          },
+          result: function() {
+            return this.newcounter > 5 ? 'Greater than 5' : 'Smaller than 5';
           }
         }
       });
