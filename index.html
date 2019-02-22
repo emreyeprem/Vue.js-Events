@@ -33,6 +33,8 @@
      <button v-on:click='decrease(2)'>Click me &#8595;</button>
       <p>{{ number }}</p>
 
+      <input type="text" v-on:keyup.enter.space="alertMe" placeholder="type to alert"/>
+
     </div>
 
     <script>
@@ -73,6 +75,9 @@
           },
           decrease: function(step){
             this.number -= step
+          },
+          alertMe: function(){
+            alert('Alert!');
           }
         }
       });
