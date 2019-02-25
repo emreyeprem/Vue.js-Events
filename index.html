@@ -53,7 +53,11 @@
       <hr />
 
       <button @click="changeLink">Click to Change Link</button>
-      <a :href="newLink">Link</a>
+      <a :href="newLink">Link</a><hr />
+
+      <div class="demo" @click="attachRed = !attachRed" :class="{red : attachRed}">Box1</div>
+      <div class="demo" :class="{red : attachRed}">Box2</div>
+      <div class="demo">Box3</div>
 
     </div>
 
@@ -76,10 +80,11 @@
           y: 0,
           number: 100,
           name: 'John Doe',
-          result: '',
+          // result: '',
           secondCounter: 0,
           newcounter: 0,
-          newLink: 'http://amazon.com'
+          newLink: 'http://amazon.com',
+          attachRed: false
 
         },
         computed: {
