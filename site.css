@@ -1,11 +1,15 @@
 .red{
   background-color: red;
-  height: 80px;
-  width: 80px;
+
 }
 .green{
   background-color: green;
 }
 .blue{
   background-color: blue;
+}
+.demo{
+  height: 80px;
+  width: 80px;
+  border-style: solid;
 }
