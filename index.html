@@ -55,9 +55,13 @@
       <button @click="changeLink">Click to Change Link</button>
       <a :href="newLink">Link</a><hr />
 
+
+      <div class="demoContainer">
       <div class="demo" @click="attachRed = !attachRed" :class="{red : attachRed}">Box1</div>
       <div class="demo" :class="{red : attachRed}">Box2</div>
       <div class="demo">Box3</div>
+      </div>
+
 
     </div>
 

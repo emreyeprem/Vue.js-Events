@@ -13,3 +13,6 @@
   width: 80px;
   border-style: solid;
 }
+.demoContainer{
+  display: flex;
+}
