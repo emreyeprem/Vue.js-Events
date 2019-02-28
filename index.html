@@ -59,8 +59,9 @@
       <div class="demoContainer">
       <div class="demo" @click="attachRed = !attachRed" :class="{red : attachRed}">Box1</div>
       <div class="demo" :class="{red : attachRed}">Box2</div>
-      <div class="demo">Box3</div>
-      </div>
+      <div class="demo" @click="attachBlue = !attachBlue" :class="{blue : attachBlue}">Box3</div>
+      <div class="demo" @click="attachGreen = !attachGreen" :class="{green : attachGreen}">Box4</div>
+    </div><hr />
 
 
     </div>
@@ -88,7 +89,9 @@
           secondCounter: 0,
           newcounter: 0,
           newLink: 'http://amazon.com',
-          attachRed: false
+          attachRed: false,
+          attachBlue: false,
+          attachGreen: false
 
         },
         computed: {
