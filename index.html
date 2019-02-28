@@ -65,6 +65,7 @@
       <input class="colorInput" type="text" v-model="color" placeholder="Type your color for Box5"/>
       <div class="demo" :style="{backgroundColor: color2}">Box6</div>
       <div class="demo" :style="myStyle">Box7</div>
+      <div class="demo" :style="[myStyle, {height: width + 'px'}]">Box8</div>
       <input class="colorInput" type="text" v-model="color2" placeholder="Type your color for Box6"/>
       <input class="colorInput" type="text" v-model="width" placeholder="Type a width for Box7"/>
       </div><hr />
