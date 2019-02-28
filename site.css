@@ -8,11 +8,21 @@
 .blue{
   background-color: blue;
 }
+.yellow{
+  background-color: yellow;
+}
+
 .demo{
   height: 80px;
   width: 80px;
+  margin-left: 5px;
   border-style: solid;
 }
 .demoContainer{
   display: flex;
+}
+.colorInput{
+ border-style: solid;
+ height: 2rem;
+ width: 8.5rem;
 }

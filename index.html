@@ -57,11 +57,17 @@
 
 
       <div class="demoContainer">
-      <div class="demo" @click="attachRed = !attachRed" :class="{red : attachRed}">Box1</div>
+      <div class="demo" @click="attachRed = !attachRed" :class="divClasses">Box1</div>
       <div class="demo" :class="{red : attachRed}">Box2</div>
       <div class="demo" @click="attachBlue = !attachBlue" :class="{blue : attachBlue}">Box3</div>
       <div class="demo" @click="attachGreen = !attachGreen" :class="{green : attachGreen}">Box4</div>
-    </div><hr />
+      <div class="demo" :class="[color, {red: attachRed}]">Box5</div>
+      <input class="colorInput" type="text" v-model="color" placeholder="Type your color for Box5"/>
+      <div class="demo" :style="{backgroundColor: color2}">Box6</div>
+      <div class="demo" :style="myStyle">Box7</div>
+      <input class="colorInput" type="text" v-model="color2" placeholder="Type your color for Box6"/>
+      <input class="colorInput" type="text" v-model="width" placeholder="Type a width for Box7"/>
+      </div><hr />
 
 
     </div>
@@ -89,15 +95,30 @@
           secondCounter: 0,
           newcounter: 0,
           newLink: 'http://amazon.com',
+          color: '',
           attachRed: false,
           attachBlue: false,
-          attachGreen: false
+          attachGreen: false,
+          color2: 'gray',
+          width: 100
 
         },
         computed: {
           output: function() {
             // console.log('Computed');
             return this.newcounter > 5 ? 'Greater than 5' : 'Smaller than 5';
+          },
+          divClasses: function(){
+            return {
+              red: this.attachRed,
+              yellow: !this.attachRed
+            }
+          },
+          myStyle: function(){
+            return {
+              backgroundColor: this.color2,
+              width: this.width + 'px'
+            }
           }
         },
         watch: {
