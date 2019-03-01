@@ -82,6 +82,10 @@
         <button class="conditionText" @click="show = !show">Switch</button>
       </div>
 
+      <ul>
+        <li v-for="each in ingredients">{{ each }}</li>
+      </ul>
+
 
 
     </div>
@@ -115,7 +119,8 @@
           attachGreen: false,
           color2: 'gray',
           width: 100,
-          show: true
+          show: true,
+          ingredients:['meat', 'fruit']
 
         },
         computed: {
