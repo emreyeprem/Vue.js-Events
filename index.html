@@ -71,6 +71,14 @@
       </div><hr />
 
 
+      <div class="conditionDiv">
+        <p class="conditionText" v-if="show">You can see me!</p>
+        <p class="conditionText" v-else="show">Now you see me!</p>
+        <p class="conditionText">Do you also see me?</p>
+        <button class="conditionText" @click="show = !show">Switch</button>
+      </div>
+
+
     </div>
 
    <!-- el: Connect to DOM -->
@@ -101,7 +109,8 @@
           attachBlue: false,
           attachGreen: false,
           color2: 'gray',
-          width: 100
+          width: 100,
+          show: true
 
         },
         computed: {

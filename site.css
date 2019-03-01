@@ -11,7 +11,6 @@
 .yellow{
   background-color: yellow;
 }
-
 .demo{
   height: 80px;
   width: 80px;
@@ -25,4 +24,10 @@
  border-style: solid;
  height: 2rem;
  width: 8.5rem;
+}
+.conditionDiv{
+  display: flex;
+}
+.conditionText{
+  margin-left: 15px;
 }
