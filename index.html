@@ -74,7 +74,7 @@
       <div class="conditionDiv">
         <p class="conditionText" v-if="show">You can see me!</p>
         <p class="conditionText" v-else="show">Now you see me!</p>
-        <p class="conditionText">Do you also see me?</p>
+        <p class="conditionText" v-show="show">Do you also see me?</p>
        <template v-if="show">
          <h2 class="conditionText">Heading</h2>
          <p class="conditionText">Inside template tag</p>
