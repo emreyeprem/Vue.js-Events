@@ -86,9 +86,10 @@
         <li v-for="(each, i) in ingredients">{{ each }} ({{ i }})</li>
       </ul>
 
-      <template v-for="(each, i) in ingredients">
+      <template v-for="(each, i) in ingredients" :key="each">
         <h3>{{ each }}</h3>
-        <p>{{ i }}</p>
+        <p>({{ i }})</p>
+        <button @click="ingredients.push('spices')">Add New</button>
       </template>
 
       <hr />
@@ -100,6 +101,7 @@
           <div v-for="(value,key,index) in person">{{ key }}:{{ value }} ({{ index }})</div>
         </li>
       </ul>
+      <span v-for="n in 10">{{ n }}</span>
       <hr />
 
 
