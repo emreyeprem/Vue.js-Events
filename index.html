@@ -91,7 +91,16 @@
         <p>{{ i }}</p>
       </template>
 
-      
+      <hr />
+      <ul>
+        <li v-for="person in persons">
+          <h4>{{ person.name }}</h4>
+          <span v-for="value in person">{{ value }}</span>
+          <hr />
+          <div v-for="(value,key,index) in person">{{ key }}:{{ value }} ({{ index }})</div>
+        </li>
+      </ul>
+      <hr />
 
 
 
