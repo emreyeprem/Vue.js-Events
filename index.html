@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
-
+    <script src="monster.js"></script>
     <script src="vue.js"></script>
 
     <title></title>
@@ -112,6 +112,9 @@
       <hr />
 
 
+    </div>
+
+
      <!--  ...******First Course Project / Monster Slayer ***...  -->
 
     <div id="monster">
@@ -162,7 +165,7 @@
 
 
 
-    </div>
+
 
    <!-- el: Connect to DOM -->
    <!-- data: Store Data to be used -->
@@ -172,11 +175,75 @@
     <script>
 
     new Vue({
+      el: '#monster',
+      data: {
+        playerHealth: 100,
+        monsterHealth: 100,
+        gameIsRunning: false
+      },
+      methods: {
+        startGame: function() {
+          this.gameIsRunning = true;
+          this.playerHealth = 100;
+          this.monsterHealth = 100;
+        },
+        attack: function() {
+          // let max = 10;
+          // let min = 3;
+          // let damage = this.calculateDamage(3, 10)
+          this.monsterHealth -= this.calculateDamage(3, 10);
+
+           if(this.checkWin()){
+             return;
+           }
+
+
+          this.playerHealth -= this.calculateDamage(5, 12);
+
+          if(this.playerHealth <= 0){
+            alert("You lost!");
+            this.gameIsRunning = false;
+          }
+          this.checkWin();
+
+        },
+        specialAttack: function() {
+
+        },
+        heal: function() {
+
+        },
+        giveUp: function() {
+
+        },
+        calculateDamage: function(min,max){
+          return Math.max(Math.floor(Math.random() * max) + 1,min);
+        },
+        checkWin: function(){
+          if(this.monsterHealth <= 0){
+            if(confirm('You won! New Game?')){
+              this.startGame();
+            }else{
+              this.gameIsRunning = false;
+            }
+            return true;
+          }else if(this.playerHealth <= 0){
+            if(confirm('You lost! New Game?')){
+              this.startGame();
+            }else{
+              this.gameIsRunning = false;
+            }
+            return true;
+          }
+          return false;
+        }
+
+      }
+    })
+
+    new Vue({
         el: '#app',
         data: {
-          playerHealth: 100,
-          monsterHealth: 100,
-          gameIsRunning: false,
           heading: "Let's practice Vue.js",
           title: 'Hello World!',
           link: 'http://google.com',
@@ -232,64 +299,6 @@
           }
         },
         methods: {
-          startGame: function() {
-            this.gameIsRunning = true;
-            this.playerHealth = 100;
-            this.monsterHealth = 100;
-          },
-          attack: function() {
-            // let max = 10;
-            // let min = 3;
-            // let damage = this.calculateDamage(3, 10)
-            this.monsterHealth -= this.calculateDamage(3, 10);
-
-             if(this.checkWin()){
-               return;
-             }
-
-
-            this.playerHealth -= this.calculateDamage(5, 12);
-
-            if(this.playerHealth <= 0){
-              alert("You lost!");
-              this.gameIsRunning = false;
-            }
-            this.checkWin();
-
-          },
-          specialAttack: function() {
-
-          },
-          heal: function() {
-
-          },
-          giveUp: function() {
-
-          },
-          calculateDamage: function(min,max){
-            return Math.max(Math.floor(Math.random() * max) + 1,min);
-          },
-          checkWin: function(){
-            if(this.monsterHealth <= 0){
-              if(confirm('You won! New Game?')){
-                this.startGame();
-              }else{
-                this.gameIsRunning = false;
-              }
-              return true;
-            }else if(this.playerHealth <= 0){
-              if(confirm('You lost! New Game?')){
-                this.startGame();
-              }else{
-                this.gameIsRunning = false;
-              }
-              return true;
-            }
-            return false;
-          },
-
-
-
           noChangeOfHeading: function(){
             this.title = 'Learn Vue.js';
             return this.heading;
