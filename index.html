@@ -4,8 +4,15 @@
     <meta charset="utf-8">
     <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
     <link rel="stylesheet" type="text/css" href="site.css" />
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <script src="monster.js" type="module"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+
     <script src="vue.js"></script>
+
     <title></title>
   </head>
   <body>
@@ -86,11 +93,11 @@
         <li v-for="(each, i) in ingredients">{{ each }} ({{ i }})</li>
       </ul>
 
-      <template v-for="(each, i) in ingredients" :key="each">
+      <div v-for="(each, i) in ingredients" :key="each">
         <h3>{{ each }}</h3>
         <p>({{ i }})</p>
         <button @click="ingredients.push('spices')">Add New</button>
-      </template>
+      </div>
 
       <hr />
       <ul>
@@ -105,6 +112,55 @@
       <hr />
 
 
+     <!--  ...******First Course Project / Monster Slayer ***...  -->
+
+    <div id="monster">
+
+      <section class="row">
+          <div class="small-6 columns">
+              <h1 class="text-center">YOU</h1>
+              <div class="healthbar">
+                  <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="{width: playerHealth + '%'}">
+                      {{ playerHealth }}
+                  </div>
+              </div>
+          </div>
+          <div class="small-6 columns">
+              <h1 class="text-center">MONSTER</h1>
+              <div class="healthbar">
+                  <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="{width: monsterHealth + '%'}">
+                      {{ monsterHealth }}
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section class="row controls" v-if="!gameIsRunning">
+          <div class="small-12 columns">
+              <button id="start-game" @click="startGame">START NEW GAME</button>
+          </div>
+      </section>
+      <section class="row controls" v-else="">
+          <div class="small-12 columns">
+              <button id="attack">ATTACK</button>
+              <button id="special-attack">SPECIAL ATTACK</button>
+              <button id="heal">HEAL</button>
+              <button id="give-up">GIVE UP</button>
+          </div>
+      </section>
+      <section class="row log">
+          <div class="small-12 columns">
+              <ul>
+                  <li>
+
+                  </li>
+              </ul>
+          </div>
+      </section>
+
+    </div>
+
+
+
 
     </div>
 
@@ -114,9 +170,31 @@
    <!-- watch: Execute code upon data changes -->
 
     <script>
+
+    // new Vue({
+    //   el: '#monster',
+    //   data: {
+    //     playerHealth: 100,
+    //     monsterHealth: 100,
+    //     gameIsRunning: false
+    //   },
+    //   methods: {
+    //     startGame: function() {
+    //       this.gameIsRunning = true;
+    //       this.playerHealth = 100;
+    //       this.monsterHealth = 100;
+    //     }
+    //   }
+    // })
+
+
+
     new Vue({
         el: '#app',
         data: {
+          playerHealth: 100,
+          monsterHealth: 100,
+          gameIsRunning: false,
           heading: "Let's practice Vue.js",
           title: 'Hello World!',
           link: 'http://google.com',
@@ -143,6 +221,7 @@
             {name: 'Max', age: 27, color: 'red'},
             {name: 'Anna', age: 'unknown', color: 'blue'}
           ]
+
         },
         computed: {
           output: function() {
@@ -171,6 +250,30 @@
           }
         },
         methods: {
+          startGame: function() {
+            this.gameIsRunning = true;
+            this.playerHealth = 100;
+            this.monsterHealth = 100;
+          },
+          attack: function() {
+            let max = 10;
+            let min = 3;
+            let damage = Math.max(Math.floor(Math.random() * max) + 1,min)
+            this.monsterHealth -= damage;
+            max = 12;
+            min = 5;
+            damage = Math.max(Math.floor(Math.random() * max) + 1,min)
+            this.playerHealth -= damage;
+          },
+          specialAttack: function() {
+
+          },
+          heal: function() {
+
+          },
+          giveUp: function() {
+
+          },
           noChangeOfHeading: function(){
             this.title = 'Learn Vue.js';
             return this.heading;
@@ -206,6 +309,7 @@
         }
       });
     </script>
+
 
   </body>
 </html>
